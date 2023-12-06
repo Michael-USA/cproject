@@ -1,5 +1,7 @@
 #pragma once
 #include <iostream>
+#include <vector>
+#include <string>
 
 using namespace std;
 
@@ -29,6 +31,7 @@ public:
 	string sendState();
 	string sendZipcode(); 
 	string sendGender();
+    vector<string> sendAll();
 
 
 	// Defines each method for receiving data from user.
@@ -41,6 +44,7 @@ public:
 	void recieveState(string newState);
 	void recieveZipcode(string zipcode); 
 	void recieveGender(string newGender);
+    void receiveAll(const vector<string>& data);
 
 	string sendToGovFName();
 	string sendToGovLName();

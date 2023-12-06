@@ -1,18 +1,15 @@
 #include <iostream>
-#include <stdlib.h>
 #include <string>
+#include <utility>
+#include <vector>
 
 #include "RegistrarEmployee.h"
 
 using namespace std;
 
-RegistrarEmployee::RegistrarEmployee() {
+RegistrarEmployee::RegistrarEmployee() = default;
 
-}
-
-RegistrarEmployee::~RegistrarEmployee() {
-
-}
+RegistrarEmployee::~RegistrarEmployee() = default;
 
 string RegistrarEmployee::sendFName() { //Displays to user that data for fName was sent.
 	std::cout << "User First Name " << fName << " Sent" << std::endl;
@@ -49,46 +46,70 @@ string RegistrarEmployee::sendState() { //Displays to user that data for state w
 	return(state);
 }
 
-string RegistrarEmployee::sendState() {
-	std::cout << "User zipcode " << zipcode << " Sent" << std::endl;
-	return(zipcode);
-}
-
 string RegistrarEmployee::sendGender() { //Displays to user that data for gender was sent.
 	std::cout << "User Gender " << gender << " Sent" << std::endl;
 	return(gender);
 }
 
+// Method to receive all information
+void RegistrarEmployee::receiveAll(const vector<string>& data) {
+    if (data.size() < 8) {
+        cout << "Insufficient data provided to receiveAll method." << endl;
+        return;
+    }
+
+    RegistrarEmployee::recieveFName(data[0]);
+    RegistrarEmployee::recieveLName(data[1]);
+    RegistrarEmployee::recieveEmail(data[2]);
+    RegistrarEmployee::recieveSSN(data[3]);
+    RegistrarEmployee::recieveAddress(data[4]);
+    RegistrarEmployee::recieveCity(data[5]);
+    RegistrarEmployee::recieveState(data[6]);
+    RegistrarEmployee::recieveGender(data[7]);
+}
+
+// Method to send all information
+vector<string> RegistrarEmployee::sendAll() {
+    RegistrarEmployee::sendFName();
+    RegistrarEmployee::sendLName();
+    RegistrarEmployee::sendEmail();
+    RegistrarEmployee::sendSSN();
+    RegistrarEmployee::sendAddress();
+    RegistrarEmployee::sendCity();
+    RegistrarEmployee::sendState();
+    RegistrarEmployee::sendGender();
+}
+
 void RegistrarEmployee::recieveFName(string newFName) { //Inserts new fname into appropriate location.
-	fName = newFName;
+	fName = std::move(newFName);
 }
 
 void RegistrarEmployee::recieveLName(string newLName) { //Inserts new lname into appropriate location.
-	lName = newLName;
+	lName = std::move(newLName);
 }
 
 void RegistrarEmployee::recieveEmail(string newEmail) { //Inserts new email into appropriate location.
-	email = newEmail;
+	email = std::move(newEmail);
 }
 
 void RegistrarEmployee::recieveSSN(string newSSN) { //Inserts new ssn into appropriate location.
-	ssn = newSSN;
+	ssn = std::move(newSSN);
 }
 
 void RegistrarEmployee::recieveAddress(string newAddress) { //Inserts new address into appropriate location.
-	address = newAddress;
+	address = std::move(newAddress);
 }
 
 void RegistrarEmployee::recieveCity(string newCity) { //Inserts new city into appropriate location.
-	city = newCity;
+	city = std::move(newCity);
 }
 
 void RegistrarEmployee::recieveState(string newState) { //Inserts new state into appropriate location.
-	state = newState;
+	state = std::move(newState);
 }
 
 void RegistrarEmployee::recieveGender(string newGender) { //Inserts new gender into appropriate location.
-	gender = newGender;
+	gender = std::move(newGender);
 }
 
 string RegistrarEmployee::sendToGovFName() { //Sends user data to Governemnt

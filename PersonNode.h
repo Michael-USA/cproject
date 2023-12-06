@@ -11,5 +11,5 @@ public:
 	PersonNode* next;
 	PersonNode* prev;
 
-	PersonNode(PersonInfo person);
+	explicit PersonNode(PersonInfo person);
 };

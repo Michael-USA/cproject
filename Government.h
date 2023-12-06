@@ -1,31 +1,26 @@
-#pragma once 
-#include <iostream>
-#include <stdlib.h> 
-#include <string>
-#include <array>
-#include <vector>
-#include <fstream>
-#include <sstream>
-#include "C:/Users/jason/OneDrive/Documents/VS Tests/voter-registration/RegistrarEmployee.h"
+#ifndef GOVERNMENT_H
+#define GOVERNMENT_H
 
-
-using namespace std; 
+#include "RegistrarEmployee.h"
+#include "PersonInfo.h"
 
 class Government {
-private: 
-// string state, deptID, deptName; -- didn't get used 
-bool approved;
-bool registered;  
-RegistrarEmployee employee; 
+private:
+    bool approved;
+    bool registered;
+    RegistrarEmployee employee;
 
 public:
-Government(); 
-~Government(); 
-bool validate_city(RegistrarEmployee employee); 
-bool validate_state(RegistrarEmployee employee);
-bool validate_zipcode(RegistrarEmployee employee);
-void checkVoterDatabase(RegistrarEmployee employee); 
-bool eligibilityCheck(); 
-void approveRegistration();  
-void updateVoterDatabase(RegistrarEmployee employee); 
+    Government();
+    ~Government();
+
+    bool valid_city();
+    bool valid_state();
+    bool valid_zipcode();
+    void checkVoterDatabase();
+    bool eligibilityCheck() const;
+    void approveRegistration();
+    void updateVoterDatabase();
 };
+
+#endif // GOVERNMENT_H

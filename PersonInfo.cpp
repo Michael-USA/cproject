@@ -1,18 +1,14 @@
 #include <iostream>
-#include <stdlib.h>
 #include <string>
+#include <limits>
 
 #include "PersonInfo.h"
 
 using namespace std;
 
-PersonInfo::PersonInfo() {
-	
-}
+PersonInfo::PersonInfo() = default;
 
-PersonInfo::~PersonInfo() {
-
-}
+PersonInfo::~PersonInfo() = default;
 
 string PersonInfo::getFName() { //Returns value stored in fName
 	return(fName);
